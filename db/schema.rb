@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_181500) do
     t.string "name"
     t.string "description"
     t.float "price"
-    # t.text "selections"
+    t.text "selections"
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
