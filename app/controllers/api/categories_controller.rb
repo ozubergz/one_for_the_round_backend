@@ -7,7 +7,11 @@ class Api::CategoriesController < ApplicationController
 
     def show
         category = Category.find_by(id: params[:id])
-        render json: { category: CategorySerializer.new(category) }
+        if category
+            render json: { category: CategorySerializer.new(category) }
+        else
+            render json: {message: "Not Found"}, status: :service_unavailable
+        end
     end
 
 end

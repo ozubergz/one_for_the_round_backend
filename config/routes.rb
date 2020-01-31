@@ -6,4 +6,6 @@ Rails.application.routes.draw do
         get '/categories/:id', to: "categories#show"
     end
 
+    post '/charge', to: "charge#create"
+
 end
