@@ -3,8 +3,8 @@ class ChargeController < ApplicationController
     def create
         Stripe.api_key = ENV['STRIPE_KEY']
         
-        token = params[:token]
-        amount = params[:amount].to_i
+        token = charge_params[:token]
+        amount = charge_params[:amount].to_i
 
         charge = Stripe::Charge.create({
             amount: amount * 100,
@@ -13,4 +13,10 @@ class ChargeController < ApplicationController
             source: token
         })
     end    
+
+    private
+    
+    def charge_params
+        params.permit(:token, :amount)
+    end
 end
