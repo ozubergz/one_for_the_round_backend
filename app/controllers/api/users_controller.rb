@@ -1,5 +1,16 @@
 class Api::UsersController < ApplicationController
 
+    def profile
+        #when current_user from Application is true
+        if current_user
+            #send current_user
+            render json: { user: UserSerializer.new(current_user) }, status: :accepted
+        else
+            #tell user to 'Please log in' if there's no current user
+            render json: { message: 'Please log in'}, status: :unauthorized unless logged_in?
+        end
+    end
+
     def create
         #create new user when registering
         user = User.create(user_params)

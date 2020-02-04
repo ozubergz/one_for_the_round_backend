@@ -1,6 +1,6 @@
+#login with user's email to authenticate
 class Api::AuthController < ApplicationController
-    #login with user's email to authenticate
-
+    
     def create
         #find user by email
         user = User.find_by(email: user_login_params[:email]);
