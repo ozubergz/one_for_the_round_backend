@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
     #localhost:3000/api/categories
     namespace :api do
-        
+        post '/checkout', to: 'cart#create'
+
         post '/signup', to: 'users#create'
         get '/profile', to: 'users#profile'
         
