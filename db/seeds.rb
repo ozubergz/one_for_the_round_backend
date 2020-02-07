@@ -15,7 +15,7 @@ breakfast = Category.create(name: "Breakfast")
 hot_sandwiches = Category.create(name: "Hot Sandwiches")
 cold_sandwiches = Category.create(name: "Cold Sandwiches") #has multi options
 peruvian_chicken = Category.create(name: "Peruvain BBQ Chicken")
-mexican_grill = Category.create(name: "Maxican Grill")
+mexican_grill = Category.create(name: "Mexican Grill")
 mexican_sides = Category.create(name: "Mexican Sides")
 savory_crepe = Category.create(name: "Savory Crepe")
 sweet_crepe = Category.create(name: "Sweet Crepe")
@@ -866,6 +866,7 @@ Item.create(
 Item.create(
     name: "Frozen Yogurt",
     description: "Frozen yogurt made with only wholesome natural ingredients choose your favorite flavor",
+    category: ice_cream,
     price: 5.00
 )
 
@@ -873,6 +874,7 @@ Item.create(
 Item.create(
     name: "Gelato ICE CREAM",
     description: "Frozen yogurt made with only wholesome natural ingredients choose your favorite flavor",
+    category: ice_cream,
     price: 5.00
 )
 
