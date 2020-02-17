@@ -1,24 +1,8 @@
-# README
+# One For The Road (Backend)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Backend for website One For The Road food delivery service
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Implemented Stripe API to process and authenticate credit card through online payment
+- Implemented JWT to generate access tokens that are given to clients to prove that they are logged in
+- Used Bcrypt to salt and hash client's password
+- Provides data of the restuarant's menu
