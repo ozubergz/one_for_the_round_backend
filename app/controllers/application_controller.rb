@@ -44,5 +44,9 @@ class ApplicationController < ActionController::API
         # true or false if there's current user
         !!current_user
     end
+
+    # def is_admin?
+    #     logged_in? current_user.admin :false
+    # end
     
 end

@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     end
 
     
-
+    post '/admin', to: "admin#create"
+    
     post '/charge', to: "charge#create"
 
 end
