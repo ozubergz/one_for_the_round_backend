@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API 
     # before_action :authorized
+    before_action :set_headers
 
     #make token
     def encode_token(payload)
@@ -45,8 +46,9 @@ class ApplicationController < ActionController::API
         !!current_user
     end
 
-    # def is_admin?
-    #     logged_in? current_user.admin :false
-    # end
-    
+    def set_headers
+        response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
+        response.headers['Content-Range'] = '0-9/9'
+    end
+
 end
