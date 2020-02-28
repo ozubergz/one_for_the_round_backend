@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
         get '/categories', to: 'categories#index'
         get '/categories/:id', to: 'categories#show'
+
+        get '/items', to: 'items#index'
     end
 
     
