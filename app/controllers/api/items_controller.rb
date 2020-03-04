@@ -1,5 +1,5 @@
 class Api::ItemsController < ApplicationController
-    before_action :set_headers
+    before_action :set_headers, except: [:update]
 
     def index
         items = Item.all
@@ -13,6 +13,10 @@ class Api::ItemsController < ApplicationController
         else
             render json: {message: "Not Found"}, status: :service_unavailable
         end
+    end
+
+    def update
+        byebug
     end
 
     # REST API expects exposer header, content-rage
