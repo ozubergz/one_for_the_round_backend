@@ -15,10 +15,25 @@ class Api::CategoriesController < ApplicationController
         end
     end
 
+    def update
+        category = Category.find_by(id: params[:id])
+        if category.update(category_params)
+            render json: category
+        else
+            render json: {error: 'Update failed'}
+        end
+    end
+
     # REST API expects exposer header, content-rage
     def set_headers
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
         response.headers['Content-Range'] = "0-10/#{Category.all.length}"
+    end
+
+    private
+
+    def category_params
+        params.require(:category).permit(:name, items: [:id, :name, :description, :price, :selections, :category_id])
     end
 
 end

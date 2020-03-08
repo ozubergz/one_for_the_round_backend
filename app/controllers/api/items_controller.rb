@@ -1,5 +1,5 @@
 class Api::ItemsController < ApplicationController
-    before_action :set_headers, except: [:update]
+    before_action :set_headers
 
     def index
         items = Item.all
@@ -16,7 +16,12 @@ class Api::ItemsController < ApplicationController
     end
 
     def update
-        byebug
+        item = Item.find(params[:id])
+        if item.update(item_params)
+            render json: item
+        else
+            render json: {error: 'Update failed'}
+        end
     end
 
     # REST API expects exposer header, content-rage
@@ -25,5 +30,9 @@ class Api::ItemsController < ApplicationController
         response.headers['Content-Range'] = "0-10/#{Item.all.length}"
     end
 
+    private
+    def item_params
+        params.require(:item).permit(:name, :description, :price, :selections, :category_id)
+    end
     
 end
