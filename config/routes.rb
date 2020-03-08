@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get '/categories', to: 'categories#index'
         get '/categories/:id', to: 'categories#show'
         put '/categories/:id', to: 'categories#update'
+        delete 'categories/:id', to: 'categories#destroy'
 
         get '/items', to: 'items#index'
         get '/items/:id', to: 'items#show'
