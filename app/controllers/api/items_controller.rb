@@ -24,6 +24,12 @@ class Api::ItemsController < ApplicationController
         end
     end
 
+    def destroy
+        item = Item.find(params[:id])
+        item.destroy
+        render json: item
+    end
+
     # REST API expects exposer header, content-rage
     def set_headers
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
