@@ -18,7 +18,7 @@ class Api::ItemsController < ApplicationController
     def create
         item = Item.create(item_params)
         if item.valid?
-            render json: item, status: :create
+            render json: item, status: :created
         else
             render json: { errors: item.errors.full_messages }
         end
