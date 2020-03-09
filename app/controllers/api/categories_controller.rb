@@ -15,6 +15,15 @@ class Api::CategoriesController < ApplicationController
         end
     end
 
+    def create
+        category = Category.create(item_params)
+        if category.valid?
+            render json: category, status: :create
+        else
+            render json: { errors: category.errors.full_messages }
+        end
+    end
+
     def update
         category = Category.find_by(id: params[:id])
         if category.update(category_params)

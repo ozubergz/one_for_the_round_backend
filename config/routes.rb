@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         delete 'categories/:id', to: 'categories#destroy'
 
         get '/items', to: 'items#index'
+        post '/items', to: 'items#create'
         get '/items/:id', to: 'items#show'
         put '/items/:id', to: 'items#update'
         delete '/items/:id', to: 'items#destroy'
