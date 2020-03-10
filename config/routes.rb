@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         post '/login', to: 'auth#create'
 
         get '/categories', to: 'categories#index'
-        post '/categories', to: 'catgories#create'
+        post '/categories', to: 'categories#create'
         get '/categories/:id', to: 'categories#show'
         put '/categories/:id', to: 'categories#update'
         delete 'categories/:id', to: 'categories#destroy'

@@ -16,7 +16,7 @@ class Api::CategoriesController < ApplicationController
     end
 
     def create
-        category = Category.create(item_params)
+        category = Category.create(category_params)
         if category.valid?
             render json: category, status: :created
         else

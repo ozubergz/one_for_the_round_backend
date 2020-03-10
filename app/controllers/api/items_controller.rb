@@ -2,8 +2,9 @@ class Api::ItemsController < ApplicationController
     before_action :set_headers
 
     def index
-        items = Item.all
-        render json: items 
+        # byebug
+        @items = Item.paginate(page: params[:page], per_page: 5)
+        render json: @items
     end
 
     def show
@@ -38,6 +39,16 @@ class Api::ItemsController < ApplicationController
         item.destroy
         render json: item
     end
+
+    def range
+        JSON.parse(params[:range])
+    end
+
+    # def sort
+    #     params[:sort] || 'created_at ASC'
+    # end
+
+    
 
     # REST API expects exposer header, content-rage
     def set_headers

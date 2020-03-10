@@ -47,3 +47,7 @@ gem "active_model_serializers", "~> 0.10.10"
 gem "stripe", "~> 5.14"
 
 gem 'jwt'
+
+gem 'will_paginate', '~> 3.1.0'
+
+# gem 'kaminari'
