@@ -2,7 +2,7 @@ class Api::CategoriesController < ApplicationController
     before_action :set_headers
 
     def index
-        categories = Category.all
+        categories = Category.order(sort).all[range[0]..range[1]]
         render json: categories
     end
 
@@ -39,8 +39,19 @@ class Api::CategoriesController < ApplicationController
         render json: category
     end
 
-    # REST API expects exposer header, content-rage
+    def sort
+        sort = JSON.parse(params[:sort])
+        sort.join(' ')
+    end
+
+   def range
+       # parse query params to get range of array
+       range = JSON.parse(params[:range])
+       range
+   end
+
     def set_headers
+        # REST API expects exposer header, content-rage
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
         response.headers['Content-Range'] = "0-10/#{Category.all.length}"
     end
