@@ -3,7 +3,6 @@ class Api::CategoriesController < ApplicationController
 
     def index
         categories = Category.order(sort).all[range[0]..range[1]]
-        # categories = Category.all
         render json: categories
     end
 

@@ -10,17 +10,8 @@ Rails.application.routes.draw do
         
         post '/login', to: 'auth#create'
 
-        get '/categories', to: 'categories#index'
-        post '/categories', to: 'categories#create'
-        get '/categories/:id', to: 'categories#show'
-        put '/categories/:id', to: 'categories#update'
-        delete 'categories/:id', to: 'categories#destroy'
-
-        get '/items', to: 'items#index'
-        post '/items', to: 'items#create'
-        get '/items/:id', to: 'items#show'
-        put '/items/:id', to: 'items#update'
-        delete '/items/:id', to: 'items#destroy'
+        resources :categories
+        resources :items
 
     end
 

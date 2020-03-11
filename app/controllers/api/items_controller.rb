@@ -2,7 +2,6 @@ class Api::ItemsController < ApplicationController
     before_action :set_headers
 
     def index
-        # byebug
         items = Item.order(sort).all[range[0]..range[1]]
         render json: items
     end
