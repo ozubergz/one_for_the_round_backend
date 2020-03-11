@@ -2,10 +2,8 @@ class Api::ItemsController < ApplicationController
     before_action :set_headers
 
     def index
-        # parse query params to get range of array
-        range = JSON.parse(params[:range])
-
-        items = Item.all[range[0]..range[1]]
+        # byebug
+        items = Item.order(sort).all[range[0]..range[1]]
         render json: items
     end
 
@@ -40,6 +38,17 @@ class Api::ItemsController < ApplicationController
         item = Item.find(params[:id])
         item.destroy
         render json: item
+    end
+
+    def sort
+         sort = JSON.parse(params[:sort])
+         sort.join(' ')
+    end
+
+    def range
+        # parse query params to get range of array
+        range = JSON.parse(params[:range])
+        range
     end
 
     # REST API expects exposer header, content-rage
