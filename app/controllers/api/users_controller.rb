@@ -1,4 +1,10 @@
 class Api::UsersController < ApplicationController
+    before_action :set_headers
+
+    def index
+        users = User.all
+        render json: users
+    end
 
     def profile
         #when current_user from Application is true
@@ -24,9 +30,16 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def set_headers
+        # REST API expects exposer header, content-rage
+        response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
+        response.headers['Content-Range'] = "0-10/#{User.all.length}"
+    end
+
     private
 
     def user_params
         params.permit(:email, :password, :first_name, :last_name, :telephone)
     end
+
 end

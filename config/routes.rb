@@ -5,14 +5,14 @@ Rails.application.routes.draw do
     namespace :api do
         post '/checkout', to: 'cart#create'
 
-        post '/signup', to: 'users#create'
+        get '/users', to: 'users#index'        
         get '/profile', to: 'users#profile'
+        post '/signup', to: 'users#create'
         
         post '/login', to: 'auth#create'
 
         resources :categories
         resources :items
-
     end
 
     post '/admin', to: "admin#create"
