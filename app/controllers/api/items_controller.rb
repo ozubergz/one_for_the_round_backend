@@ -40,13 +40,13 @@ class Api::ItemsController < ApplicationController
     end
 
     def sort
-         sort = JSON.parse(params[:sort])
-         sort.join(' ')
+         sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id DESC'
+         sort
     end
 
     def range
         # parse query params to get range of array
-        range = JSON.parse(params[:range])
+        range = params[:range] ? JSON.parse(params[:range]) : [0, 9]
         range
     end
 

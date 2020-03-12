@@ -2,7 +2,6 @@ class Api::UsersController < ApplicationController
     before_action :set_headers
 
     def index
-        # byebug
         users = User.all
         render json: users
     end
