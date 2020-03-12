@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 2020_02_23_211103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "carts", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.text "items"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -42,10 +34,9 @@ ActiveRecord::Schema.define(version: 2020_02_23_211103) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "item_id", null: false
+    t.text "items"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -60,8 +51,6 @@ ActiveRecord::Schema.define(version: 2020_02_23_211103) do
     t.boolean "admin", default: false
   end
 
-  add_foreign_key "carts", "users"
   add_foreign_key "items", "categories"
-  add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
 end
