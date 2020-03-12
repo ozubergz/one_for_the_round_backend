@@ -11,7 +11,7 @@ class ChargeController < ApplicationController
             currency: 'usd',
             description: 'Example Charge',
             source: token
-        })
+        });
     end    
 
     private

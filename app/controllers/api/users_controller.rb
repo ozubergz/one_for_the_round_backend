@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
     before_action :set_headers
 
     def index
+        # byebug
         users = User.all
         render json: users
     end
@@ -39,7 +40,7 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:email, :password, :first_name, :last_name, :telephone)
+        params.permit(:email, :password, :first_name, :last_name, :phone)
     end
 
 end

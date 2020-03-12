@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_211103) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.integer "telephone"
+    t.string "phone"
     t.string "password_digest"
     t.boolean "admin", default: false
   end
