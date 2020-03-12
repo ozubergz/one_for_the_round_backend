@@ -11,7 +11,7 @@ class Api::ItemsController < ApplicationController
         if item
             render json: item
         else
-            render json: {message: "Not Found"}, status: :service_unavailable
+            render json: { message: "Not Found" }, status: :service_unavailable
         end
     end
 

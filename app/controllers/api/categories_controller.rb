@@ -3,6 +3,7 @@ class Api::CategoriesController < ApplicationController
 
     def index
         categories = Category.order(sort).all[range[0]..range[1]]
+        # categories = Category.all
         render json: categories
     end
 
@@ -41,13 +42,13 @@ class Api::CategoriesController < ApplicationController
 
     def sort
         # parse query params or assign with 'id DESC'
-        sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id DESC'
+        sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
         sort
     end
 
     def range
         # parse query params or assing with array of range
-        range = params[:range] ? JSON.parse(params[:range]) : [0, 9]
+        range = params[:range] ? JSON.parse(params[:range]) : [0, Category.all.length]
         range
     end
 
