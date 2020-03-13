@@ -6,7 +6,14 @@ class Api::OrdersController < ApplicationController
         render json: orders
     end
 
-    
+    def show
+        order = Order.find_by(id: params[:id])
+        if order
+            render json: order
+        else
+            render json: { message: "Not Found" }, status: :service_unavailable
+        end
+    end    
 
     def create
         #persist users order
