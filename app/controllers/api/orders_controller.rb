@@ -1,4 +1,12 @@
-class Api::OrderController < ApplicationController
+class Api::OrdersController < ApplicationController
+    before_action :set_headers
+
+    def index
+        orders = Order.all
+        render json: orders
+    end
+
+    
 
     def create
         #persist users order
@@ -14,6 +22,11 @@ class Api::OrderController < ApplicationController
 
     def order_params
         params.permit(:user_id, items: [:id, :name, :description, :price, :selections])
+    end
+
+    def set_headers
+        response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
+        response.headers['Content-Range'] = "0-10/#{Order.all.length}"
     end
 
 end
