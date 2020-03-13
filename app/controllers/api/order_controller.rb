@@ -1,8 +1,8 @@
 class Api::OrderController < ApplicationController
 
-    #persist users order
     def create
-        order = Order.create(cart_params);
+        #persist users order
+        order = Order.create(order_params);
         if order.valid?
             render json: { message: 'Persisting order was successful'}, status: :created
         else
@@ -12,7 +12,7 @@ class Api::OrderController < ApplicationController
 
     private
 
-    def cart_params
+    def order_params
         params.permit(:user_id, items: [:id, :name, :description, :price, :selections])
     end
 

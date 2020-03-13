@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
   belongs_to :user
-
   serialize :items, Array
 end
