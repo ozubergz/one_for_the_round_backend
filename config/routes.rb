@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     namespace :api do
         post '/checkout', to: 'orders#create'
 
-        get '/users', to: 'users#index'        
+        get '/users', to: 'users#index'
+        get '/users/:id', to: 'users#show'  
         get '/profile', to: 'users#profile'
         post '/signup', to: 'users#create'
         

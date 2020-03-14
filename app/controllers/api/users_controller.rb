@@ -6,6 +6,15 @@ class Api::UsersController < ApplicationController
         render json: users
     end
 
+    def show 
+        user = User.find_by(id: params[:id])
+        if user
+            render json: user
+        else
+            render json: { message: "Not Found" }, status: :service_unavailable
+        end
+    end
+
     def profile
         #when current_user from Application is true
         if current_user
