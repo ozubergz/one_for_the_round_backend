@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2020_03_14_033410) do
     t.string "customer"
     t.string "address"
     t.decimal "amount"
+    t.string "email"
+    t.string "phone"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
