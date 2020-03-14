@@ -25,6 +25,12 @@ class Api::OrdersController < ApplicationController
         end
     end
 
+    def destroy
+        order = Order.find(params[:id])
+        order.destroy
+        render json: order
+    end
+
     private
 
     def order_params

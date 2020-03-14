@@ -39,6 +39,12 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        render json: user
+    end
+
     def set_headers
         # REST API expects exposer header, content-rage
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
