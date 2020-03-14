@@ -13,7 +13,7 @@ class Api::OrdersController < ApplicationController
         else
             render json: { message: "Not Found" }, status: :service_unavailable
         end
-    end    
+    end
 
     def create
         #persist users order
