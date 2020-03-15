@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
     before_action :set_headers
 
     def index
-        users = User.all
+        users = User.order(sort).all[range[0]..range[1]]
         render json: users
     end
 
@@ -44,6 +44,17 @@ class Api::UsersController < ApplicationController
         user.destroy
         render json: user
     end
+
+    def sort
+        sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id DESC'
+        sort
+   end
+
+   def range
+       # parse query params to get range of array
+       range = params[:range] ? JSON.parse(params[:range]) : [0, 9]
+       range
+   end
 
     def set_headers
         # REST API expects exposer header, content-rage

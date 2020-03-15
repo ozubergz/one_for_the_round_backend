@@ -2,7 +2,7 @@ class Api::OrdersController < ApplicationController
     before_action :set_headers
 
     def index
-        orders = Order.all
+        orders = Order.order(sort).all[range[0]..range[1]]
         render json: orders
     end
 
@@ -30,6 +30,17 @@ class Api::OrdersController < ApplicationController
         order.destroy
         render json: order
     end
+
+    def sort
+        sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id DESC'
+        sort
+   end
+
+   def range
+       # parse query params to get range of array
+       range = params[:range] ? JSON.parse(params[:range]) : [0, 9]
+       range
+   end
 
     private
 
