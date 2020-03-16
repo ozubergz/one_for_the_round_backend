@@ -4,7 +4,7 @@ Rails.application.routes.draw do
         post '/signup', to: 'users#create'
         post '/login', to: 'auth#create'
         post '/checkout', to: 'orders#create'
-        
+                
         resources :users, only: [:index, :show, :destroy]
         resources :orders, only: [:index, :show, :destroy]
         resources :categories
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     
     #Serve websocket cable requests in-process
     mount ActionCable.server => '/cable'
+
+    get '/notification', to: 'notifications#index'
 
     post '/admin', to: "admin#create"
     post '/charge', to: "charge#create"

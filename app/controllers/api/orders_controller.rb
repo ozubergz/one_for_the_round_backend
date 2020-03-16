@@ -19,9 +19,9 @@ class Api::OrdersController < ApplicationController
         #persist users order
         order = Order.create(order_params);
         if order.valid?
-            render json: { message: 'Persisting order was successful'}, status: :created
+            render json: { message: 'success'}, status: :created
         else
-            render json: { error: 'Persisting order failed'}
+            render json: { error: 'failed' }
         end
     end
 
