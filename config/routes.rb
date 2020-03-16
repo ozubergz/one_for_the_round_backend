@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-    namespace :api do
-        
+    namespace :api do        
         get '/profile', to: 'users#profile'
         post '/signup', to: 'users#create'
         post '/login', to: 'auth#create'
@@ -11,6 +10,9 @@ Rails.application.routes.draw do
         resources :categories
         resources :items
     end
+    
+    #Serve websocket cable requests in-process
+    mount ActionCable.server => '/cable'
 
     post '/admin', to: "admin#create"
     post '/charge', to: "charge#create"
