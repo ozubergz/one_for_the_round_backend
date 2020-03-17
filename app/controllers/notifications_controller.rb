@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
     def index
-        ActionCable.server.broadcast('notification_channel', 'You have visited the welcome page.')
+        ActionCable.server.broadcast('notification_channel', 'Customer has made an order.')
     end
 end
