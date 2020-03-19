@@ -45,7 +45,7 @@ class Api::OrdersController < ApplicationController
     private
 
     def order_params
-        params.permit(:customer, :phone, :address, :amount, :email, items: [:id, :name, :description, :price, :selections])
+        params.permit(:customer, :phone, :address, :amount, :email, items: [:id, :name, :description, :price])
     end
 
     def set_headers

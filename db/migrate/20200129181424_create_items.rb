@@ -4,7 +4,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :description
       t.float :price
-      t.text :selections
       t.belongs_to :category, null: false, foreign_key: true
 
       t.timestamps
