@@ -46,7 +46,7 @@ class Api::ItemsController < ApplicationController
 
     def range
         # parse query params to get range of array
-        range = params[:range] ? JSON.parse(params[:range]) : [0, 9]
+        range = params[:range] ? JSON.parse(params[:range]) : [0, Item.all.length]
         range
     end
 
