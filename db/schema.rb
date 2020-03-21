@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_022208) do
+ActiveRecord::Schema.define(version: 2020_03_21_220211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "input_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -27,6 +33,8 @@ ActiveRecord::Schema.define(version: 2020_03_21_022208) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
     t.boolean "required", default: false
+    t.bigint "input_type_id", null: false
+    t.index ["input_type_id"], name: "index_item_options_on_input_type_id"
     t.index ["item_id"], name: "index_item_options_on_item_id"
   end
 
@@ -71,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_022208) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "item_options", "input_types"
   add_foreign_key "item_options", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "options", "item_options"

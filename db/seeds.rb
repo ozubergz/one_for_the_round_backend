@@ -8,6 +8,7 @@
 
 Category.destroy_all
 Item.destroy_all
+InputType.destroy_all
 
 #============================ Categories ==============================
 
@@ -1033,3 +1034,4 @@ Item.create(
     category: juices_smoothies,
     price: 5.25  
 )
+

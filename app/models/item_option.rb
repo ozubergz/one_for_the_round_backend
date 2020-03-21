@@ -1,4 +1,5 @@
 class ItemOption < ApplicationRecord
   belongs_to :item
-  has_many :options
+  belongs_to :input_type
+  has_many :options, dependent: :destroy
 end
