@@ -1035,3 +1035,5 @@ Item.create(
     price: 5.25  
 )
 
+InputType.create(name: 'radio')
+InputType.create(name: 'checkbox')

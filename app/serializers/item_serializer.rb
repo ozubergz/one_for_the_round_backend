@@ -8,9 +8,8 @@ class ItemSerializer < ActiveModel::Serializer
       {
         id: item_option.id,
         item_id: item_option.item_id,
-        name: item_option.description,
+        name: item_option.name,
         input_type: item_option.input_type.name,
-        required: item_option.required,
         options: item_option.options.collect { |option|
           option.slice(:id, :name, :price_variation)
         }

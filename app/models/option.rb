@@ -1,3 +1,4 @@
 class Option < ApplicationRecord
-    belongs_to :item_option
+  belongs_to :input_type
+  belongs_to :item_option
 end

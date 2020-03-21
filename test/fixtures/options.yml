@@ -2,8 +2,12 @@
 
 one:
   name: MyString
-  price_variation: 1.5
+  price: 1.5
+  input_type: one
+  item_option: one
 
 two:
   name: MyString
-  price_variation: 1.5
+  price: 1.5
+  input_type: two
+  item_option: two
