@@ -1037,3 +1037,4 @@ Item.create(
 
 InputType.create(name: 'radio')
 InputType.create(name: 'checkbox')
+

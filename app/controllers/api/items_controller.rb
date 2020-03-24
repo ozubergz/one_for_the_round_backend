@@ -2,7 +2,7 @@ class Api::ItemsController < ApplicationController
     before_action :set_headers
 
     def index
-        items = Item.order(sort).all[range[0]..range[1]]
+        items = Item.includes(:category).order(sort)[range[0]..range[1]];
         render json: items
     end
 
@@ -40,7 +40,7 @@ class Api::ItemsController < ApplicationController
     end
 
     def sort
-         sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id DESC'
+         sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
          sort
     end
 

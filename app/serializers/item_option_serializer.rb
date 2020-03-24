@@ -1,4 +1,4 @@
 class ItemOptionSerializer < ActiveModel::Serializer
-  attributes :id, :name, :input_type, :required
-
+  attributes :id, :name, :item_id
+  has_many :options
 end

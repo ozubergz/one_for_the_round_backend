@@ -1,7 +1,7 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :price, :category_id, :item_options
-  
-  # has_many :item_options
+  attributes :id, :name, :description, :category_id, :price, :item_options
+    
+  # belongs_to :category
 
   def item_options
     object.item_options.map { |item_option|
@@ -9,9 +9,13 @@ class ItemSerializer < ActiveModel::Serializer
         id: item_option.id,
         item_id: item_option.item_id,
         name: item_option.name,
-        input_type: item_option.input_type.name,
         options: item_option.options.collect { |option|
-          option.slice(:id, :name, :price_variation)
+          { 
+            id: option.id,
+            name: option.name,
+            price: option.price,
+            input_type: option.input_type.name
+          }
         }
       }
     }
