@@ -11,9 +11,24 @@ class Api::ItemOptionsController < ApplicationController
         render json: item_option
     end
 
+    def create
+        item_option = ItemOption.create(item_option_params)
+        if item.valid?
+            render json: item_option, status: :created
+        else
+            render json: { errors: item_option.errors.full_messages }
+        end
+    end
+
     def set_headers
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
         response.headers['Content-Range'] = "0-10/#{ItemOption.all.length}"
     end
+
+    private
     
+    def item_option_params
+        params.require(:item_option).permit(:name, :item_id)
+    end
+ 
 end

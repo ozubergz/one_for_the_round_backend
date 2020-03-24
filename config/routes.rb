@@ -5,8 +5,7 @@ Rails.application.routes.draw do
         post '/login', to: 'auth#create'
         post '/checkout', to: 'orders#create'
                 
-        resources :item_options
-        
+        resources :item_options 
         resources :users, only: [:index, :show, :destroy]
         resources :orders, only: [:index, :show, :destroy]
         resources :categories
