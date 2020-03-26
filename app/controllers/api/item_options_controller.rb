@@ -13,7 +13,7 @@ class Api::ItemOptionsController < ApplicationController
 
     def create
         item_option = ItemOption.create(item_option_params)
-        if item.valid?
+        if item_option.valid?
             render json: item_option, status: :created
         else
             render json: { errors: item_option.errors.full_messages }
