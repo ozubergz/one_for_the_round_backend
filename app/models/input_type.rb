@@ -1,2 +1,0 @@
-class InputType < ApplicationRecord
-end

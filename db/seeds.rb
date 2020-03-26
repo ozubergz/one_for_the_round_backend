@@ -8,7 +8,6 @@
 
 Category.destroy_all
 Item.destroy_all
-InputType.destroy_all
 
 #============================ Categories ==============================
 
@@ -1035,6 +1034,4 @@ Item.create(
     price: 5.25  
 )
 
-InputType.create(name: 'radio')
-InputType.create(name: 'checkbox')
 
