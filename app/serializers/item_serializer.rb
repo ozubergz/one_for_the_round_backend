@@ -1,6 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :category_id, :price, :item_options
-  # has_many :item_options
   
   def item_options
     self.object.item_options.map { |item_option|

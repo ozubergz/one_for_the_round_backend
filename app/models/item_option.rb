@@ -1,4 +1,4 @@
 class ItemOption < ApplicationRecord
-  belongs_to :item, dependent: :destroy
+  belongs_to :item
   serialize :options, Array
 end

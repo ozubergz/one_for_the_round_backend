@@ -20,6 +20,12 @@ class Api::ItemOptionsController < ApplicationController
         end
     end
 
+    def destroy
+        item_option = ItemOption.find(params[:id])
+        item_option.destroy
+        render json: item_option
+    end
+
     def set_headers
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
         response.headers['Content-Range'] = "0-10/#{ItemOption.all.length}"
