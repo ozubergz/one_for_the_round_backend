@@ -20,6 +20,15 @@ class Api::ItemOptionsController < ApplicationController
         end
     end
 
+    def update
+        item_option = ItemOption.find(params[:id])
+        if item_option.update(item_option_params)
+            render json: item_option
+        else
+            render json: { error: "Update failed" }
+        end
+    end
+
     def destroy
         item_option = ItemOption.find(params[:id])
         item_option.destroy
