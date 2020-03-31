@@ -41,7 +41,7 @@ class Api::CategoriesController < ApplicationController
 
     def sort
         # parse query params or assign with 'id DESC'
-        sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
+        sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id DESC'
         sort
     end
 
