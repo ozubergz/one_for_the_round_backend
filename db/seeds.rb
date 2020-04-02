@@ -1033,8 +1033,3 @@ Item.create(
     category: juices_smoothies,
     price: 5.25  
 )
-
-Category.all.map do |category|
-    category.number_of_items = category.items.length
-    category.save
-end

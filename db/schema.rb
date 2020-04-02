@@ -10,19 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_202150) do
+ActiveRecord::Schema.define(version: 2020_03_26_210542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "number_of_items"
-  end
-
-  create_table "input_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -45,17 +38,6 @@ ActiveRecord::Schema.define(version: 2020_03_31_202150) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
-  end
-
-  create_table "options", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
-    t.bigint "input_type_id", null: false
-    t.bigint "item_option_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["input_type_id"], name: "index_options_on_input_type_id"
-    t.index ["item_option_id"], name: "index_options_on_item_option_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -82,6 +64,4 @@ ActiveRecord::Schema.define(version: 2020_03_31_202150) do
 
   add_foreign_key "item_options", "items"
   add_foreign_key "items", "categories"
-  add_foreign_key "options", "input_types"
-  add_foreign_key "options", "item_options"
 end
