@@ -1,12 +1,9 @@
 class Api::ItemsController < ApplicationController
     before_action :set_headers
 
-    def index
-        # byebug
-        
+    def index        
         # render json: items.includes(:category).order(sort)[range[0]..range[1]]
         render json: items
-        # render json: params[:filter]
     end
 
     def show
@@ -43,21 +40,28 @@ class Api::ItemsController < ApplicationController
     end
 
     def items
-        filtered_items = params[:filter].length != 0 ?
-            JSON.parse(params[:filter])['items']
-                : 
-            Item.includes(:category).order(sort)[range[0]..range[1]];
+        @items
+        if params[:filter]['items']
+            @items = JSON.parse(params[:filter])['items']
+            params_sort = JSON.parse(params[:sort])
+            
+            @items = sort[1] == 'ASC' ? 
+                @items.sort_by { |item| item[params_sort[0]] } 
+                    : 
+                @items.sort_by { |item| item[params_sort[0]] }.reverse
+        else
+            @items = Item.includes(:category).order(sort)[range[0]..range[1]];
+        end
+        @items
     end
 
     def sort
          sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
-        #  sort
     end
 
     def range
         # parse query params to get range of array
         range = params[:range] ? JSON.parse(params[:range]) : [0, Item.all.length]
-        # range
     end
 
     # REST API expects exposer header, content-rage
