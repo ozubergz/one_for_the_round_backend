@@ -2,8 +2,7 @@ class Api::ItemsController < ApplicationController
     before_action :set_headers
 
     def index        
-        # render json: items.includes(:category).order(sort)[range[0]..range[1]]
-        render json: items
+        render json: isFiltered ? filter_items : all_items
     end
 
     def show
@@ -39,20 +38,25 @@ class Api::ItemsController < ApplicationController
         render json: item
     end
 
-    def items
-        @items
-        if params[:filter]['items']
-            @items = JSON.parse(params[:filter])['items']
-            params_sort = JSON.parse(params[:sort])
-            
-            @items = sort[1] == 'ASC' ? 
-                @items.sort_by { |item| item[params_sort[0]] } 
-                    : 
-                @items.sort_by { |item| item[params_sort[0]] }.reverse
-        else
-            @items = Item.includes(:category).order(sort)[range[0]..range[1]];
-        end
-        @items
+    def filter_items
+        items = JSON.parse(params[:filter])['items']
+        prop_name = JSON.parse(params[:sort])[0]
+        isAscend ? 
+            items.sort_by { |item| item[prop_name] }
+                :
+            items.sort_by { |item| item[prop_name] }.reverse  
+    end
+
+    def all_items
+        Item.includes(:category).order(sort)[range[0]..range[1]];
+    end
+
+    def isAscend
+        JSON.parse(params[:sort])[1] == 'ASC'
+    end
+
+    def isFiltered
+        !!params[:filter]['items']
     end
 
     def sort
