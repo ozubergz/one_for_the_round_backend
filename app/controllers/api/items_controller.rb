@@ -56,7 +56,7 @@ class Api::ItemsController < ApplicationController
     end
 
     def isFiltered
-        !!params[:filter]['items']
+        !!params[:filter] ? !!params[:filter]['items'] : false
     end
 
     def sort
