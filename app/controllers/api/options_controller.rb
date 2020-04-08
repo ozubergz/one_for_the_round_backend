@@ -9,7 +9,14 @@ class Api::OptionsController < ApplicationController
         end
     end
 
-    
+    def update
+        option = Option.find(params[:id])
+        if option.update(option_params)
+            render json: option
+        else
+            render json: { error: "Update failed" }
+        end
+    end
 
     def destroy
         option = Option.find(params[:id])
