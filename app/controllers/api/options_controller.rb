@@ -9,6 +9,14 @@ class Api::OptionsController < ApplicationController
         end
     end
 
+    
+
+    def destroy
+        option = Option.find(params[:id])
+        option.destroy
+        render json: option
+    end
+
     private
 
     def option_params
