@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :options
     namespace :api do        
         get '/profile', to: 'users#profile'
         post '/signup', to: 'users#create'

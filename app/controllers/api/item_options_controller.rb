@@ -43,7 +43,7 @@ class Api::ItemOptionsController < ApplicationController
     private
     
     def item_option_params
-        params.require(:item_option).permit(:name, :item_id, options: [:name, :price, :input_type])
+        params.require(:item_option).permit(:name, :item_id)
     end
  
 end
