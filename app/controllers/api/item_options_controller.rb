@@ -2,7 +2,7 @@ class Api::ItemOptionsController < ApplicationController
     before_action :set_headers
 
     def index
-        item_options = ItemOption.all
+        item_options = ItemOption.order(sort).all
         render json: item_options
     end
 
@@ -34,6 +34,12 @@ class Api::ItemOptionsController < ApplicationController
         item_option.destroy
         render json: item_option
     end
+
+    def sort
+        # parse query params or assign with 'id DESC'
+        sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
+    end
+
 
     def set_headers
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'

@@ -42,13 +42,11 @@ class Api::CategoriesController < ApplicationController
     def sort
         # parse query params or assign with 'id DESC'
         sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
-        sort
     end
 
     def range
         # parse query params or assing with array of range
         range = params[:range] ? JSON.parse(params[:range]) : [0, Category.all.length]
-        range
     end
 
     def set_headers
