@@ -5,8 +5,9 @@ class ItemSerializer < ActiveModel::Serializer
     self.object.item_options.map { |item_option|
       { 
         id: item_option.id,
-        name: item_option.name,
         item_id: item_option.item_id,
+        name: item_option.name,
+        required: item_option.required,
         options: item_option.options
       }
     }
