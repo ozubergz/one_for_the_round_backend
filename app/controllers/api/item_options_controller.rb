@@ -40,7 +40,6 @@ class Api::ItemOptionsController < ApplicationController
         sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
     end
 
-
     def set_headers
         response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
         response.headers['Content-Range'] = "0-10/#{ItemOption.all.length}"
@@ -49,7 +48,7 @@ class Api::ItemOptionsController < ApplicationController
     private
     
     def item_option_params
-        params.require(:item_option).permit(:name, :item_id)
+        params.require(:item_option).permit(:name, :required, :item_id)
     end
  
 end
