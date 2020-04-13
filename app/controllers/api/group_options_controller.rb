@@ -2,8 +2,10 @@ class Api::GroupOptionsController < ApplicationController
     # before_action :set_headers
 
     # def index
-    #     # item_options = ItemOption.order(sort).all
-    #     render json: isFiltered ? filtered_item_options : all_item_options
+        # group_options = GroupOption.all;
+        # render json: group_options
+        # item_options = ItemOption.order(sort).all
+        # render json: isFiltered ? filtered_item_options : all_item_options
     # end
 
     # def show
@@ -68,13 +70,13 @@ class Api::GroupOptionsController < ApplicationController
 
     # def set_headers
     #     response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
-    #     response.headers['Content-Range'] = "0-10/#{ItemOption.all.length}"
+    #     response.headers['Content-Range'] = "0-10/#{GroupOption.all.length}"
     # end
 
     # private
     
-    # def item_option_params
-    #     params.require(:item_option).permit(:name, :required, :item_id)
+    # def group_option_params
+    #     params.require(:group_option).permit(:name, :required)
     # end
  
 end
