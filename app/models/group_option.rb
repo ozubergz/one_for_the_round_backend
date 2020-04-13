@@ -1,4 +1,6 @@
 class GroupOption < ApplicationRecord
-  # belongs_to :item
-  # belongs_to :option
+  has_many :options, dependent: :destroy
+  
+  has_many :item_group_options, dependent: :destroy
+  has_many :items, through: :item_group_options
 end

@@ -1,17 +1,15 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :category_id, :price
+  attributes :id, :name, :description, :category_id, :price, :group_options
   
-  # def item_options
-  #   self.object.item_options.map { |item_option|
-  #     { 
-  #       id: item_option.id,
-  #       item_id: item_option.item_id,
-  #       name: item_option.name,
-  #       required: item_option.required,
-  #       options: item_option.options
-  #     }
-  #   }
-  # end
+  def group_options
+    self.object.group_options.map { |group_option|
+      { 
+        id: group_option.id,
+        name: group_option.name,
+        required: group_option.required,
+        options: group_option.options
+      }
+    }
+  end
   
-  # has_many :item_options
 end

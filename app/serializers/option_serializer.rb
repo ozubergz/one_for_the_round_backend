@@ -1,4 +1,3 @@
 class OptionSerializer < ActiveModel::Serializer
   attributes :id, :name, :price, :input_type
-  # has_many :item_options
 end
