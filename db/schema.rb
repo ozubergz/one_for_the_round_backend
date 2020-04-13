@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_003946) do
+ActiveRecord::Schema.define(version: 2020_02_05_183123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(version: 2020_04_10_003946) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "item_options", force: :cascade do |t|
-    t.string "name"
-    t.bigint "item_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "required"
-    t.index ["item_id"], name: "index_item_options_on_item_id"
-  end
-
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -38,16 +29,6 @@ ActiveRecord::Schema.define(version: 2020_04_10_003946) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
-  end
-
-  create_table "options", force: :cascade do |t|
-    t.bigint "item_option_id", null: false
-    t.string "name"
-    t.float "price"
-    t.string "input_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_option_id"], name: "index_options_on_item_option_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -72,7 +53,5 @@ ActiveRecord::Schema.define(version: 2020_04_10_003946) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "item_options", "items"
   add_foreign_key "items", "categories"
-  add_foreign_key "options", "item_options"
 end

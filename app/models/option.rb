@@ -1,3 +1,4 @@
 class Option < ApplicationRecord
-  belongs_to :item_option
+  has_many :item_options, dependent: :destroy
+  has_many :items, through: :item_options
 end

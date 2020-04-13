@@ -1,8 +1,8 @@
 class Api::ItemsController < ApplicationController
     before_action :set_headers
 
-    def index        
-        render json: isFiltered ? filter_items : all_items
+    def index
+        render json: isFiltered ? filtered_items : all_items
     end
 
     def show
@@ -38,7 +38,7 @@ class Api::ItemsController < ApplicationController
         render json: item
     end
 
-    def filter_items
+    def filtered_items
         items = JSON.parse(params[:filter])['items']
         prop_name = JSON.parse(params[:sort])[0]
         isAscend ? 
