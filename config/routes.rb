@@ -7,11 +7,11 @@ Rails.application.routes.draw do
         post '/checkout', to: 'orders#create'
         
         resources :options
-        resources :group_options 
-        resources :users, only: [:index, :show, :destroy]
-        resources :orders, only: [:index, :show, :destroy]
+        resources :group_options
         resources :categories
         resources :items
+        resources :users, only: [:index, :show, :destroy]
+        resources :orders, only: [:index, :show, :destroy]
     end
     
     #Serve websocket cable requests in-process

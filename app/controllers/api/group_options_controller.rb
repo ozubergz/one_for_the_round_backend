@@ -1,26 +1,28 @@
 class Api::GroupOptionsController < ApplicationController
-    # before_action :set_headers
+    before_action :set_headers
 
-    # def index
-        # group_options = GroupOption.all;
-        # render json: group_options
+    def index
         # item_options = ItemOption.order(sort).all
         # render json: isFiltered ? filtered_item_options : all_item_options
-    # end
+    
+        group_options = GroupOption.all
+        render json: group_options
+    end
 
-    # def show
-    #     item_option = ItemOption.find(params[:id])
-    #     render json: item_option
-    # end
+    def show
+        group_option = GroupOption.find(params[:id])
+        render json: group_option
+    end
 
-    # def create
-    #     item_option = ItemOption.create(item_option_params)
-    #     if item_option.valid?
-    #         render json: item_option, status: :created
-    #     else
-    #         render json: { errors: item_option.errors.full_messages }
-    #     end
-    # end
+    def create        
+        group_option = GroupOption.create(group_option_params)
+        if group_option.valid?
+            item_group_option = ItemGroupOption.create(item_id: params[:item_id], group_option_id: group_option.id)
+            render json: item_group_option, status: :created
+        else
+            render json: { errors: group_option.errors.full_messages }
+        end
+    end
 
     # def update
     #     item_option = ItemOption.find(params[:id])
@@ -60,7 +62,7 @@ class Api::GroupOptionsController < ApplicationController
 
     # def range
     #     # parse query params to get range of array
-    #     range = params[:range] ? JSON.parse(params[:range]) : [0, ItemOption.all.length]
+    #     range = params[:range] ? JSON.parse(params[:range]) : [0, GroupOption.all.length]
     # end
 
     # def sort
@@ -68,15 +70,15 @@ class Api::GroupOptionsController < ApplicationController
     #     sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id ASC'
     # end
 
-    # def set_headers
-    #     response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
-    #     response.headers['Content-Range'] = "0-10/#{GroupOption.all.length}"
-    # end
+    def set_headers
+        response.headers['Access-Control-Expose-Headers'] = 'Content-Range'
+        response.headers['Content-Range'] = "0-10/#{GroupOption.all.length}"
+    end
 
-    # private
+    private
     
-    # def group_option_params
-    #     params.require(:group_option).permit(:name, :required)
-    # end
+    def group_option_params
+        params.require(:group_option).permit(:name, :required)
+    end
  
 end
