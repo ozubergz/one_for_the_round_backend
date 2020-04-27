@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         
         resources :options
         resources :group_options
+        resources :item_group_options
         resources :categories
         resources :items
         resources :users, only: [:index, :show, :destroy]

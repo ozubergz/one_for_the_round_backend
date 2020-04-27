@@ -17,7 +17,7 @@ class Api::GroupOptionsController < ApplicationController
     def create        
         group_option = GroupOption.create(group_option_params)
         if group_option.valid?
-            item_group_option = ItemGroupOption.create(item_id: params[:item_id], group_option_id: group_option.id)
+            item_group_option = ItemGroupOption.create(item_id: params[:item_id], group_option_id: group_option.id);
             render json: item_group_option, status: :created
         else
             render json: { errors: group_option.errors.full_messages }
