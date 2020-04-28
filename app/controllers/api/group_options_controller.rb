@@ -14,7 +14,7 @@ class Api::GroupOptionsController < ApplicationController
         render json: group_option
     end
 
-    def create        
+    def create
         group_option = GroupOption.create(group_option_params)
         if group_option.valid?
             item_group_option = ItemGroupOption.create(item_id: params[:item_id], group_option_id: group_option.id);
@@ -33,11 +33,11 @@ class Api::GroupOptionsController < ApplicationController
     #     end
     # end
 
-    # def destroy
-    #     item_option = ItemOption.find(params[:id])
-    #     item_option.destroy
-    #     render json: item_option
-    # end
+    def destroy
+        group_option = GroupOption.find(params[:id])
+        group_option.destroy
+        render json: group_option
+    end
 
     # def isFiltered
     #     !!params[:filter] ? !!params[:filter]['item_option'] : false

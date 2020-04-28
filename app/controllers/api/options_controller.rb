@@ -27,6 +27,6 @@ class Api::OptionsController < ApplicationController
     private
 
     def option_params
-        params.require(:option).permit(:item_option_id, :name, :price, :input_type)
+        params.require(:option).permit(:name, :price, :input_type, :group_option_id)
     end
 end
