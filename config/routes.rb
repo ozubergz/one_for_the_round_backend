@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
     get '/notification', to: 'notifications#index'
 
-    post '/admin', to: "admin#create"
+    post '/authenticate', to: "admin#create"
     post '/charge', to: "charge#create"
 
 end
