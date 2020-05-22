@@ -15,6 +15,15 @@ class Api::OrdersController < ApplicationController
         end
     end
 
+    def update
+        order = Order.find(params[:id])
+        if order.update(pending: params[:pending])
+            render json: order
+        else
+            render json: { error: "Update failed"}
+        end
+    end
+
     def create
         #persist users order
         order = Order.create(order_params);

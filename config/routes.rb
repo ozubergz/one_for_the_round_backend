@@ -12,7 +12,7 @@ Rails.application.routes.draw do
         resources :categories
         resources :items
         resources :users, only: [:index, :show, :destroy]
-        resources :orders, only: [:index, :show, :destroy]
+        resources :orders, only: [:index, :show, :destroy, :update]
     end
     
     #Serve websocket cable requests in-process
