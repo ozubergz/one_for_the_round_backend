@@ -13,6 +13,8 @@ Rails.application.routes.draw do
         resources :items
         resources :users, only: [:index, :show, :destroy]
         resources :orders, only: [:index, :show, :destroy, :update]
+        
+        post '/orders/destroy_all', to: 'orders#destroy_all'
     end
     
     #Serve websocket cable requests in-process

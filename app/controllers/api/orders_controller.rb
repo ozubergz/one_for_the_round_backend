@@ -40,6 +40,11 @@ class Api::OrdersController < ApplicationController
         render json: order
     end
 
+    def destroy_all
+        Order.where(:id => params[:ids]).destroy_all
+        render json: {:ids => params[:ids] }, status: :ok
+    end
+
     def sort
         sort = params[:sort] ? JSON.parse(params[:sort]).join(' ') : 'id DESC'
         sort
